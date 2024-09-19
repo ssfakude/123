@@ -11,7 +11,27 @@
           var lastname = document.getElementById("lname").value;
           var Email = document.getElementById("Email").value;
           var Number = document.getElementById("Phone_Number").value;
-   
+          formData={
+            "data":{
+              "Name":{
+                "first_name":firstname,
+                "last_name":lastname
+              },
+              "Email":Email,
+              "Phone_Number":Number
+            }
+          }
+          config={
+            appName:"YourApp",
+            formName:"yourformName",
+            data:formData
+          }
+          ZOHO.CREATOR.API.addRecord(config).then(function(response){
+            if(response.code==3000){
+              console.log("record added successfully");
+            }
+            var formrest=document.getElementById("myform").reset();
+          });
          
 });
 }
